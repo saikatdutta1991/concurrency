@@ -31,9 +31,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/nestjsplus/nestjs-package-starter"
+    "url": "https://github.com/saikatdutta1991/concurrency"
   },
-  "bugs": "https://github.com/nestjsplus/nestjs-package-starter",
+  "bugs": "https://github.com/saikatdutta1991/concurrency",
   "peerDependencies": {
     "@nestjs/common": "^6.0.0",
     "ioredis": "^5.1.0"
