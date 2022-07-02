@@ -6,7 +6,7 @@
 
 ## Installation
 
-2. Run npm/yarn install
+Run npm/yarn install
 
 ```bash
 npm install @saikatdutta1991/concurrency
@@ -49,13 +49,13 @@ Pass a key generator function and `anyMethod` arguments will be passed into the 
 
 ### Set Auto Lock Release Timeout
 
-By default lock gets released after 30 seconds. To set custom auto lock relase timeout.
+By default lock gets released after 30 seconds. To set custom auto lock release timeout.
 
 ```js
 @Concurrency({ key: 'test', autoReleaseAfterSeconds: 40 })
 ```
 
-\*Note: Lock gets released automacally regardless of function execution time.
+\*Note: Lock gets released automacally after either function execution or timeout of default 30 seconds.
 
 ## Author
 
