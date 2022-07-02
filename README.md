@@ -1,40 +1,63 @@
-<h1 align="center"></h1>
+<h1 align="center">Concurrency</h1>
 
 <div align="center">
-  <a href="http://nestjs.com/" target="_blank">
-    <img src="https://nestjs.com/img/logo_text.svg" width="150" alt="Nest Logo" />
-  </a>
+  <h4>Distributed method level concurrency lock NestJS module backed by Redis </h4>
 </div>
 
-<h3 align="center">NestJS npm Package Starter</h3>
+## Installation
 
-<div align="center">
-  <a href="https://nestjs.com" target="_blank">
-    <img src="https://img.shields.io/badge/built%20with-NestJs-red.svg" alt="Built with NestJS">
-  </a>
-</div>
-
-### Installation
-
-1. Clone the repo
 2. Run npm/yarn install
 
 ```bash
-cd nestjs-package-starter
-npm install
+npm install @saikatdutta1991/concurrency
 ```
 
-## Change Log
+## Register Module
 
-See [Changelog](CHANGELOG.md) for more information.
+```js
+@Module({
+  imports: [ConcurrencyModule.register('redis://localhost:6379')],
+})
+export class AppModule {}
+```
 
-## Contributing
+## Usage
 
-Contributions welcome! See [Contributing](CONTRIBUTING.md).
+### Assume we need to apply concurrency for given method
+
+```js
+public anyMethod(args) {
+...
+}
+```
+
+### Simple Usecase
+
+```js
+@Concurrency({ key: 'test' })
+```
+
+### Key Generator
+
+Pass a key generator function and `anyMethod` arguments will be passed into the generator function automatically
+
+```js
+@Concurrency({ key: (args: any) => `key_${args.customer.id}` })
+```
+
+### Set Auto Lock Release Timeout
+
+By default lock gets released after 30 seconds. To set custom auto lock relase timeout.
+
+```js
+@Concurrency({ key: 'test', autoReleaseAfterSeconds: 40 })
+```
+
+\*Note: Lock gets released automacally regardless of function execution time.
 
 ## Author
 
-**John Biundo (Y Prospect on [Discord](https://discord.gg/G7Qnnhy))**
+**Saikat Dutta ([LinkedIn](https://www.linkedin.com/in/saikat-dutta-6481ba5b/))**
 
 ## License
 
