@@ -12,6 +12,13 @@
 npm install @saikatdutta1991/concurrency
 ```
 
+## Imports
+
+```js
+import { ConcurrencyModule } from '@saikatdutta1991/concurrency';
+import { Concurrency } from '@saikatdutta1991/concurrency';
+```
+
 ## Register Module
 
 ```js
