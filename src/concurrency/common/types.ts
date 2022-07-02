@@ -1,1 +1,1 @@
-export type UseKeyGenerator = (args: any[]) => string;
+export type KeyGenerator = (args: any[]) => string;

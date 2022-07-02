@@ -2,10 +2,10 @@ import { Inject } from '@nestjs/common';
 import { DEFAULT_LOCK_SECONDS } from '../common/constants';
 import { LockAcquireException } from '../common/lock-acquire.exception';
 import { LockService } from '../services/lock.service';
-import { UseKeyGenerator } from '../common/types';
+import { KeyGenerator } from '../common/types';
 
 export function Concurrency(options: {
-  useKey: string | UseKeyGenerator;
+  key: string | KeyGenerator;
   autoReleaseAfterSeconds?: number;
   errorMessage?: string;
 }): MethodDecorator {
@@ -21,9 +21,9 @@ export function Concurrency(options: {
 
     descriptor.value = async function wrapper(...args: any[]) {
       const key =
-        typeof options.useKey === 'string'
-          ? options.useKey
-          : options.useKey.apply(this, args);
+        typeof options.key === 'string'
+          ? options.key
+          : options.key.apply(this, args);
 
       const lockService = this.lockService as LockService;
 
