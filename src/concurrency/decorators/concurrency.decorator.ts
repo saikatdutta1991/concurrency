@@ -6,7 +6,7 @@ import { UseKeyGenerator } from '../common/types';
 
 export function Concurrency(options: {
   useKey: string | UseKeyGenerator;
-  releaseAfterSeconds?: number;
+  autoReleaseAfterSeconds?: number;
   errorMessage?: string;
 }): MethodDecorator {
   const LockServiceinjector = Inject(LockService.LOCK_SERVICE);
@@ -31,7 +31,7 @@ export function Concurrency(options: {
         await lockService.acquireLock({
           key,
           releaseAfterSeconds:
-            options.releaseAfterSeconds || DEFAULT_LOCK_SECONDS,
+            options.autoReleaseAfterSeconds || DEFAULT_LOCK_SECONDS,
         });
       } catch (error) {
         if (error instanceof LockAcquireException && options.errorMessage) {
