@@ -33,15 +33,10 @@ export class AppModule {}
 ### Assume we need to apply concurrency for given method
 
 ```js
+@Concurrency({ key: 'test' })
 public anyMethod(args) {
 ...
 }
-```
-
-### Simple Usecase
-
-```js
-@Concurrency({ key: 'test' })
 ```
 
 ### Key Generator
