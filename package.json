@@ -1,6 +1,6 @@
 {
   "name": "@saikatdutta1991/concurrency",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "NestJS Methodd Concurrency Lock With Redis",
   "author": "John Biundo <johnfbiundo@gmail.com>",
   "license": "MIT",
@@ -35,7 +35,7 @@
   },
   "bugs": "https://github.com/saikatdutta1991/concurrency",
   "peerDependencies": {
-    "@nestjs/common": "^6.0.0",
+    "@nestjs/common": "^6.0.0 || ^7.0.0 || ^8.0.0",
     "ioredis": "^5.1.0"
   },
   "dependencies": {
